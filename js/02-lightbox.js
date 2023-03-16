@@ -4,14 +4,15 @@ import { galleryItems } from './gallery-items.js';
 const galleryEl = document.querySelector(".gallery");
 console.log(galleryEl);
 const createImg = ({preview, original, description})=>`
-<div class="gallery__item">
-<a class="gallery__item" 
-href="${original}">
-<img class="gallery__image"
- src="${preview}" 
- alt="${description}" />
-</a>
-</div>`;
+<li class="gallery__item">
+   <a class="gallery__link"
+    href="${original}">
+      <img class="gallery__image"
+       src="${preview}"
+        alt="${description}" />
+   </a>
+</li>`;
+
 console.log(createImg);
 
 const galleryElsImg = galleryItems.map(createImg).join("");
@@ -24,12 +25,9 @@ function onImgContainer(evt) {
     if (!evt.target.classList.contains("gallery__image")) {
         return;
     }
-    console.log(evt.target);
+    console.log(evt.target);}
    
-    new SimpleLightbox(".gallery a", {
-        captionSelector: 'img',
+  new SimpleLightbox(".gallery a", {
         captionsData: 'alt',
-        captionPosition: 'bottom',
         captionDelay: 250,
-        scrollZoom: false,
-       });}
+       });
